@@ -1,0 +1,239 @@
+﻿<Window
+    x:Class="Homework8_Ex0_StudentManagement.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Background="#ccd"
+    mc:Ignorable="d">
+    <Grid Margin="4">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Background="White"
+            BorderBrush="#aaa"
+            BorderThickness="0,0,2,2"
+            Content="Student Management"
+            FontSize="18"
+            FontWeight="SemiBold" />
+
+        <!--  Add New Student Card  -->
+        <Border
+            Grid.Row="1"
+            Margin="8"
+            Padding="4"
+            VerticalAlignment="Top"
+            Background="white"
+            BorderBrush="#aaa"
+            BorderThickness="0,0,2,2">
+
+            <StackPanel>
+                <Label
+                    Content="Add New Student"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Foreground="#55d" />
+
+                <!--  Student Information Part  -->
+                <GroupBox Header="Student Information">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="8" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Label Grid.Row="0" Content="First Name" />
+                        <TextBox
+                            x:Name="FirstNameTextBox"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0,4" />
+
+                        <Label Grid.Row="1" Content="Last Name" />
+                        <TextBox
+                            x:Name="LastNameTextBox"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0,4" />
+
+                        <Label Grid.Row="2" Content="Date of Birth" />
+                        <DatePicker
+                            x:Name="DateOfBirthDatePicker"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="0,4" />
+
+                        <Label Grid.Row="3" Content="Class Standing" />
+                        <ComboBox
+                            x:Name="ClassStandingComboBox"
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Margin="0,4"
+                            SelectedIndex="0">
+                            <ComboBoxItem Content="Freshman" />
+                            <ComboBoxItem Content="Sophomore" />
+                            <ComboBoxItem Content="Junior" />
+                            <ComboBoxItem Content="Senior" />
+                        </ComboBox>
+
+                        <Expander
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            Header="More Info">
+                            <StackPanel>
+                                <Label Content="Based on how many credits the student has earned" />
+                                <Label Content="Freshman:  up to 45* Credits" />
+                                <Label Content="Sophomore: 45.00 to 90* Credits" />
+                                <Label Content="Junior: 90.00 - 135* Credits" />
+                                <Label Content="Senior: 135.00 credits or higher" />
+                                <Label Content="-----------------------------------" />
+                                <Label Content="* = Upper ranges' value is excluded" />
+                            </StackPanel>
+                        </Expander>
+                    </Grid>
+                </GroupBox>
+
+                <!--  Student Address Part  -->
+                <GroupBox Header="Student Address">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="8" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Content="Address" />
+                        <TextBox
+                            x:Name="AddressTextBox"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0,4" />
+
+                        <Label Grid.Row="1" Content="City" />
+                        <ComboBox
+                            x:Name="CityComboBox"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0,4"
+                            SelectedIndex="0">
+                            <ComboBoxItem Content="City A" />
+                            <ComboBoxItem Content="City B" />
+                            <ComboBoxItem Content="City C" />
+                        </ComboBox>
+
+                        <Label Grid.Row="2" Content="Post Code" />
+                        <TextBox
+                            x:Name="PostCodeTextBox"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="0,4" />
+                    </Grid>
+                </GroupBox>
+
+                <Button
+                    x:Name="AddStudentButton"
+                    Margin="0,4"
+                    Padding="4"
+                    HorizontalAlignment="Center"
+                    Background="#55A"
+                    Click="AddStudentButton_Click"
+                    Content="Add Student"
+                    FontSize="16"
+                    Foreground="White" />
+            </StackPanel>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8"
+            Background="white"
+            BorderBrush="#aaa"
+            BorderThickness="0,0,2,2">
+
+            <!--  Students Card  -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    HorizontalAlignment="Center"
+                    Content="Students"
+                    FontSize="16"
+                    FontWeight="SemiBold" />
+
+                <!--  Added Students  -->
+                <StackPanel
+                    x:Name="StudentsStackPanel"
+                    Grid.Row="1"
+                    Margin="4" />
+
+                <StackPanel
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+
+                    <Button
+                        x:Name="ImportStudentsButton"
+                        Margin="4"
+                        Padding="4"
+                        HorizontalAlignment="Center"
+                        Background="#A5A"
+                        Click="ImportStudentsButton_Click"
+                        Content="Import Students"
+                        FontSize="16"
+                        Foreground="White" />
+
+                    <Button
+                        x:Name="ExportStudentsButton"
+                        Margin="4"
+                        Padding="4"
+                        HorizontalAlignment="Center"
+                        Background="#5A5"
+                        Click="ExportStudentsButton_Click"
+                        Content="Export Students"
+                        FontSize="16"
+                        Foreground="White" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
